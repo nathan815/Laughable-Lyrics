@@ -21,8 +21,9 @@
 
         <TextView
                 android:id="@+id/title_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Welcome to Laughable Lyrics!"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +35,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_text"
-                >
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                android:layout_marginEnd="8dp">
 
             <AutoCompleteTextView
                     android:id="@+id/enter_song"
@@ -49,6 +50,15 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+                android:text="Go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/button"
+                app:layout_constraintBottom_toBottomOf="@+id/enter_song_wrapper"
+                app:layout_constraintTop_toTopOf="@+id/enter_song_wrapper"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
