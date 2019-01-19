@@ -9,7 +9,7 @@ object InjectorUtils {
         return MainRepository.getInstance()
     }
 
-    private fun provideHomeViewModelFactory() : HomeViewModelFactory {
+    fun provideHomeViewModelFactory() : HomeViewModelFactory {
         val mainRepository: MainRepository = getMainRepositorySingleton()
         return HomeViewModelFactory(mainRepository)
     }
