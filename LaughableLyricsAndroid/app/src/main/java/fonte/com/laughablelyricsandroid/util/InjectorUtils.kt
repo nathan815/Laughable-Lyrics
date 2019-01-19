@@ -2,6 +2,8 @@ package fonte.com.laughablelyricsandroid.util
 
 import fonte.com.laughablelyricsandroid.data.MainRepository
 import fonte.com.laughablelyricsandroid.ui.main.HomeViewModelFactory
+import fonte.com.laughablelyricsandroid.ui.main.LyricsViewModelFactory
+import fonte.com.laughablelyricsandroid.ui.main.OptionsViewModelFactory
 
 object InjectorUtils {
 
@@ -9,8 +11,18 @@ object InjectorUtils {
         return MainRepository.getInstance()
     }
 
-    fun provideHomeViewModelFactory() : HomeViewModelFactory {
+    fun provideHomeViewModelFactory(): HomeViewModelFactory {
         val mainRepository: MainRepository = getMainRepositorySingleton()
         return HomeViewModelFactory(mainRepository)
+    }
+
+    fun provideOptionsViewModelFactory(): OptionsViewModelFactory {
+        val mainRepository: MainRepository = getMainRepositorySingleton()
+        return OptionsViewModelFactory(mainRepository)
+    }
+
+    fun provideLyricsViewModelFactory(): LyricsViewModelFactory {
+        val mainRepository: MainRepository = getMainRepositorySingleton()
+        return LyricsViewModelFactory(mainRepository)
     }
 }
