@@ -14,7 +14,7 @@ import fonte.com.laughablelyricsandroid.util.InjectorUtils
 class LyricsFragment : Fragment() {
 
     private lateinit var lyricsFragmentViewModel: LyricsViewModel
-    
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val factory: LyricsViewModelFactory = InjectorUtils.provideLyricsViewModelFactory()
         lyricsFragmentViewModel = ViewModelProviders.of(this, factory).get(LyricsViewModel::class.java)
