@@ -6,7 +6,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.MainFragment">
+        tools:context=".ui.main.HomeFragment">
 
     <TextView
             android:id="@+id/message"
