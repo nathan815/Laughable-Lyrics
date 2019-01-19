@@ -1,4 +1,4 @@
-import searchCtrl from '../controllers/search.controller';
+const searchCtrl = require('../controllers/search');
 
 module.exports = function(app) {
   app.get('/search', searchCtrl.index);
