@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "backend3": true,
+        "LaughableLyricsAndroid": true
+    }
+}
