@@ -3,6 +3,6 @@ package fonte.com.laughablelyricsandroid.ui.main
 import androidx.lifecycle.ViewModel
 import fonte.com.laughablelyricsandroid.data.MainRepository
 
-class HomeViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class LyricsViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
 }
