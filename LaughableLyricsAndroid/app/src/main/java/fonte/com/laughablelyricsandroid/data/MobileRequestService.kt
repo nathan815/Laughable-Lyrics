@@ -5,8 +5,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import java.net.URLEncoder
 
 class MobileRequestService {
 
@@ -14,9 +15,9 @@ class MobileRequestService {
         val result: MutableLiveData<MutableList<String>> = MutableLiveData()
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(context)
-        val url = "http://35.22.120.35:1337/search?q=$queryParams"
+        val url = "http://35.22.120.35:1337/search?q=${URLEncoder.encode(queryParams, "utf-8")}"
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
                 Log.d(LOG_TAG, "Response: %s".format(response.toString()))
             },
@@ -24,9 +25,7 @@ class MobileRequestService {
                 Log.e(LOG_TAG, error.toString())
             }
         )
-
-
-        queue.add(jsonObjectRequest)
+        queue.add(jsonArrayRequest)
         return result
 
     }
