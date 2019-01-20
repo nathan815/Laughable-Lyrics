@@ -40,7 +40,7 @@
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_text"
-                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/execute_search_button"
                 android:layout_marginEnd="8dp">
 
             <AutoCompleteTextView
@@ -56,7 +56,7 @@
 
         <Button
                 android:text="Go"
-                android:id="@+id/button"
+                android:id="@+id/execute_search_button"
                 android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import fonte.com.laughablelyricsandroid.MainActivity
 import fonte.com.laughablelyricsandroid.R
 import fonte.com.laughablelyricsandroid.databinding.HomeFragmentBinding
 import fonte.com.laughablelyricsandroid.util.InjectorUtils
+import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +38,8 @@ class HomeFragment : Fragment() {
 //        list.add("Hello")
 //        list.add("Hi")
 //        enter_song.setAdapter(ArrayAdapter<String>(context!!, android.R.layout.simple_dropdown_item_1line, list))
-
+        execute_search_button.setOnClickListener{
+            (activity as MainActivity).navController.navigate(R.id.action_homeFragment_to_optionsFragment, null)
+        }
     }
 }
