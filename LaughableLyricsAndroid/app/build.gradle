@@ -58,6 +58,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     implementation "com.google.android.material:material:$rootProject.supportLibraryVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation 'com.android.volley:volley:1.1.1'
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
