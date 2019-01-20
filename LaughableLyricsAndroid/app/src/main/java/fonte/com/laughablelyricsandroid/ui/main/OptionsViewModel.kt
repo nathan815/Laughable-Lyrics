@@ -9,7 +9,7 @@ import fonte.com.laughablelyricsandroid.util.SearchResult
 class OptionsViewModel(private val mainRepository: MainRepository) : ViewModel() {
     var numBounces: Int = 10
     var isProgressBarVisible: MutableLiveData<Boolean> = MutableLiveData()
-    var searchTerm: String = ""
+    var searchTerm: String? = ""
 
     init {
         isProgressBarVisible.value = true

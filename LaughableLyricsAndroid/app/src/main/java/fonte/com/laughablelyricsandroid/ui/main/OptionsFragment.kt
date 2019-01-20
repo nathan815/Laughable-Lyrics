@@ -32,6 +32,7 @@ class OptionsFragment : Fragment() {
                     viewModel = optionsFragmentViewModel
                     setLifecycleOwner(this@OptionsFragment)
                 }
+        optionsFragmentViewModel.searchTerm = OptionsFragmentArgs.fromBundle(arguments!!).searchQuery
         return binding.root
     }
 
@@ -52,17 +53,20 @@ class OptionsFragment : Fragment() {
         search_results_recycler.layoutManager = LinearLayoutManager(activity)
 
         context?.let {
-            optionsFragmentViewModel.searchRequest("hello world", it).observe(this, Observer { result ->
-                Log.d("OptionsFragment", result.toString())
-//                for(i in result) {
-//
-//                }
-//                val searchResults: ArrayList<SearchResult> = arrayListOf()
-//                val dummySearchResult = SearchResult("Nonstop", "Drake", "40", "image.com")
-//                searchResults.add(dummySearchResult)
-                search_results_recycler.adapter = SearchResultsRecyclerAdapter(result)
-                optionsFragmentViewModel.isProgressBarVisible.value = false
-            })
+            optionsFragmentViewModel.searchTerm?.let { it1 ->
+                optionsFragmentViewModel.searchRequest(it1, it).observe(this, Observer { result ->
+                    Log.d("OptionsFragment", result.toString())
+
+        //                for(i in result) {
+        //
+        //                }
+        //                val searchResults: ArrayList<SearchResult> = arrayListOf()
+        //                val dummySearchResult = SearchResult("Nonstop", "Drake", "40", "image.com")
+        //                searchResults.add(dummySearchResult)
+                    search_results_recycler.adapter = SearchResultsRecyclerAdapter(result)
+                    optionsFragmentViewModel.isProgressBarVisible.value = false
+                })
+            }
         }
 
 
