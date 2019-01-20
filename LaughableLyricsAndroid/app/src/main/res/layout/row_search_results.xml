@@ -5,7 +5,7 @@
         android:id="@+id/search_results_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:padding="8dp"
         android:clickable="true"
         android:focusable="true"
         android:background="?attr/selectableItemBackground">

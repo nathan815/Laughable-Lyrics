@@ -49,7 +49,6 @@
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:layout_margin="8dp"
                 android:visibility="@{safeUnbox(viewModel.isProgressBarVisible) ? View.GONE : View.VISIBLE}"
-                android:text="search results for: hello world"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
