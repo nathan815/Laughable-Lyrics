@@ -7,6 +7,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
                 name="viewModel"
                 type="fonte.com.laughablelyricsandroid.ui.main.HomeViewModel"

@@ -7,7 +7,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground">
 
     <TextView
             android:id="@+id/search_result_text"
@@ -16,6 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView

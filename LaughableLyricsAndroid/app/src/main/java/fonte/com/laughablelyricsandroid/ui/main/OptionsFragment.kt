@@ -52,5 +52,6 @@ class OptionsFragment : Fragment() {
         searchResults.add(dummySearchResult)
         search_results_recycler.layoutManager = LinearLayoutManager(activity)
         search_results_recycler.adapter = SearchResultsRecyclerAdapter(searchResults)
+
     }
 }
