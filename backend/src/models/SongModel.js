@@ -1,6 +1,6 @@
 function parseLyrics(lyrics, removeAllNewLines) {
     return lyrics
-        .replace(/\[((Pre-)?Chorus|Verse) [0-9]+\]/g, '')
+        .replace(/\[((Pre-)?Chorus|Verse)( [0-9]+)?]/g, '')
         .replace(/^[(\n)]+/, '')
         .replace(/[(\n)]+/g, removeAllNewLines ? ' ' : '\n ');
 }

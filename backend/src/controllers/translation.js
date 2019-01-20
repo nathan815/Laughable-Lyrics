@@ -7,7 +7,6 @@ const MAX_STAGE_COUNT = 10;
 module.exports = {
 
   async index(req, res) {
-    const txt = req.query.text;
     res.json();
   },
 
@@ -20,16 +19,17 @@ module.exports = {
     }
     if(!parseInt(stages) || stages < MIN_STAGE_COUNT || stages > MAX_STAGE_COUNT) {
       res.status(422).json({
-        error: 'stages field not a number or within limits'
+        error: 'stages field not a number or not within limits'
       });
     }
     try {
       const song = await songService.getSongById(songId);
       const translation =
-        await translationService.createTranslation(song.lyrics, stages);
+        await translationService.createTranslation(songId, song.lyrics, stages);
       res.json(translation);
     } catch (err) {
-      res.status(500).json(err);
+      console.log('ERR', err);
+      res.status(500).send(err);
     }
 
   },
