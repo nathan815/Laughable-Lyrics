@@ -8,7 +8,7 @@
     <fragment
             android:id="@+id/homeFragment"
             android:name="fonte.com.laughablelyricsandroid.ui.main.HomeFragment"
-            android:label="home_fragment"
+            android:label="Laughable Lyrics"
             tools:layout="@layout/home_fragment">
         <action
                 android:id="@+id/action_homeFragment_to_optionsFragment"
@@ -17,19 +17,29 @@
     <fragment
             android:id="@+id/optionsFragment"
             android:name="fonte.com.laughablelyricsandroid.ui.main.OptionsFragment"
-            android:label="options_fragment"
+            android:label="Choose A Song"
             tools:layout="@layout/options_fragment">
         <action
                 android:id="@+id/action_optionsFragment_to_lyricsFragment"
                 app:destination="@id/lyricsFragment"/>
+        <argument
+                android:name="searchQuery"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="null"/>
     </fragment>
     <fragment
             android:id="@+id/lyricsFragment"
             android:name="fonte.com.laughablelyricsandroid.ui.main.LyricsFragment"
-            android:label="lyrics_fragment"
+            android:label="Lyrics"
             tools:layout="@layout/lyrics_fragment">
         <action
                 android:id="@+id/action_lyricsFragment_to_homeFragment"
                 app:destination="@id/homeFragment"/>
+        <argument
+                android:name="songId"
+                app:argType="string"
+                android:defaultValue="null"
+                app:nullable="true"/>
     </fragment>
 </navigation>
