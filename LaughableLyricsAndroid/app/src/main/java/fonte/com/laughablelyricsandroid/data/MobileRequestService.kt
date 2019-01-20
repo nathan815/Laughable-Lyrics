@@ -7,12 +7,13 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import fonte.com.laughablelyricsandroid.util.SearchResult
 import java.net.URLEncoder
 
 class MobileRequestService {
 
-    fun searchRequest(queryParams: String, context: Context): MutableLiveData<MutableList<String>> {
-        val result: MutableLiveData<MutableList<String>> = MutableLiveData()
+    fun searchRequest(queryParams: String, context: Context): MutableLiveData<ArrayList<SearchResult>> {
+        val result: MutableLiveData<ArrayList<SearchResult>> = MutableLiveData()
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(context)
         val url = "http://35.22.120.35:1337/search?q=${URLEncoder.encode(queryParams, "utf-8")}"
@@ -20,6 +21,18 @@ class MobileRequestService {
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
                 Log.d(LOG_TAG, "Response: %s".format(response.toString()))
+                // result.value = response
+                val searchResults: ArrayList<SearchResult> = arrayListOf()
+                for (i in 0 until response!!.length()) {
+                    val searchResult = SearchResult(
+                        response.getJSONObject(i).get("title").toString(),
+                        response.getJSONObject(i).getJSONObject("artist").get("name").toString(),
+                        response.getJSONObject(i).get("id").toString(),
+                        response.getJSONObject(i).get("image_url").toString()
+                    )
+                    searchResults.add(searchResult)
+                }
+                result.value = searchResults
             },
             Response.ErrorListener { error ->
                 Log.e(LOG_TAG, error.toString())

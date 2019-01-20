@@ -2,11 +2,12 @@ package fonte.com.laughablelyricsandroid.data
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import fonte.com.laughablelyricsandroid.util.SearchResult
 
 class MainRepository {
     private var mobileRequestService: MobileRequestService = MobileRequestService.getInstance()
 
-    fun searchRequest(queryParams: String, context: Context): MutableLiveData<MutableList<String>> {
+    fun searchRequest(queryParams: String, context: Context): MutableLiveData<ArrayList<SearchResult>> {
         return mobileRequestService.searchRequest(queryParams, context)
     }
 
