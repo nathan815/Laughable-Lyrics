@@ -9,9 +9,12 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import fonte.com.laughablelyricsandroid.R
+import fonte.com.laughablelyricsandroid.adapter.SearchResultsRecyclerAdapter
 import fonte.com.laughablelyricsandroid.databinding.OptionsFragmentBinding
 import fonte.com.laughablelyricsandroid.util.InjectorUtils
+import fonte.com.laughablelyricsandroid.util.SearchResult
 import kotlinx.android.synthetic.main.options_fragment.*
 
 class OptionsFragment : Fragment() {
@@ -44,5 +47,10 @@ class OptionsFragment : Fragment() {
                 }
             }
         })
+        val searchResults: ArrayList<SearchResult> = arrayListOf()
+        val dummySearchResult = SearchResult("Nonstop", "Drake", "40", "image.com")
+        searchResults.add(dummySearchResult)
+        search_results_recycler.layoutManager = LinearLayoutManager(activity)
+        search_results_recycler.adapter = SearchResultsRecyclerAdapter(searchResults)
     }
 }

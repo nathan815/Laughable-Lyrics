@@ -38,7 +38,8 @@
                 app:destination="@id/homeFragment"/>
         <argument
                 android:name="songId"
-                app:argType="integer"
-                android:defaultValue="0"/>
+                app:argType="string"
+                android:defaultValue="null"
+                app:nullable="true"/>
     </fragment>
 </navigation>
