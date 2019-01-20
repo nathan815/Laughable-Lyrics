@@ -15,7 +15,7 @@ module.exports = {
   async song(req, res) {
     const id = req.params.id;
     try {
-      const song = songService.getSongById(id);
+      const song = await songService.getSongById(id);
       res.json(song);
     } catch(err) {
       res.json(err);

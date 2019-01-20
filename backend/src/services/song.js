@@ -1,9 +1,9 @@
 const lyricist = require('./lyricist');
+const SongModel = require('../models/SongModel');
 
 module.exports = {
     async getSongById(id) {
         const song = await lyricist.song(id, { fetchLyrics: true });
-        console.log('song',song);
-        return song;
+        return new SongModel(song);
     },
-}
+};

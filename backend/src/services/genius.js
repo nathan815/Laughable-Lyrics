@@ -1,2 +1,3 @@
 const GeniusApi = require('genius-api');
-module.exports = new GeniusApi(process.env.GENIUS_API_ACCESS_TOKEN);
+const genius = new GeniusApi(process.env.GENIUS_API_ACCESS_TOKEN);
+module.exports = genius;
