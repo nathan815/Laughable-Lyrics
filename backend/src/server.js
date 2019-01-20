@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const dotenv = require('dotenv');
 
-const app = express();
 dotenv.load();
+
+const app = express();
 
 app.use(bodyParser.json());
 
