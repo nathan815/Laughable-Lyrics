@@ -6,13 +6,12 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.load();
 
-const port = process.env.SERVER_PORT;
+app.use(bodyParser.json());
 
 require('./routes')(app);
 
-app.use(bodyParser.json());
-app.use(expressValidator);
-
+const port = process.env.HTTP_PORT;
+const url = process.env.APP_URL;
 app.listen(port, function() {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server now running at ${url}:${port}`);
 });

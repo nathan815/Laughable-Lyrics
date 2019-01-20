@@ -17,7 +17,8 @@
     "express-validator": "^5.3.1",
     "genius-api": "^0.4.1",
     "lyricist": "^2.2.2",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "redis": "^2.8.0"
   },
   "devDependencies": {}
 }

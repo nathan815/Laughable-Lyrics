@@ -8,7 +8,7 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { songId } = req.body;
+    const { songId, languageCount } = req.body;
     res.send(id);
   },
 
