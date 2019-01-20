@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="fonte.com.laughablelyricsandroid.ui.main.HomeFragment"
+            android:label="home_fragment"
+            tools:layout="@layout/home_fragment">
+        <action
+                android:id="@+id/action_homeFragment_to_optionsFragment"
+                app:destination="@id/optionsFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/optionsFragment"
+            android:name="fonte.com.laughablelyricsandroid.ui.main.OptionsFragment"
+            android:label="options_fragment"
+            tools:layout="@layout/options_fragment">
+        <action
+                android:id="@+id/action_optionsFragment_to_lyricsFragment"
+                app:destination="@id/lyricsFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/lyricsFragment"
+            android:name="fonte.com.laughablelyricsandroid.ui.main.LyricsFragment"
+            android:label="lyrics_fragment"
+            tools:layout="@layout/lyrics_fragment">
+        <action
+                android:id="@+id/action_lyricsFragment_to_homeFragment"
+                app:destination="@id/homeFragment"/>
+    </fragment>
+</navigation>
