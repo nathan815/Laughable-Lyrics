@@ -8,3 +8,8 @@ data class SearchResult(
     var Id: String?,
     var ImageUrl: String?
 )
+
+data class LyricResponse(
+    var Original: String?,
+    var Translated: String?
+)

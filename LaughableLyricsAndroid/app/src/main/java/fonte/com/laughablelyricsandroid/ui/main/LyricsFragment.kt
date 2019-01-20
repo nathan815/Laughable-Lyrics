@@ -1,11 +1,13 @@
 package fonte.com.laughablelyricsandroid.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import fonte.com.laughablelyricsandroid.R
 import fonte.com.laughablelyricsandroid.databinding.LyricsFragmentBinding
@@ -27,6 +29,11 @@ class LyricsFragment : Fragment() {
         return binding.root
     }
 
-
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lyricsFragmentViewModel.songId?.let { lyricsFragmentViewModel.getLyrics(it, 5, context!!) }
+            ?.observe(this, Observer { response ->
+                Log.d("Tag", response.Original)
+            })
+    }
 }
