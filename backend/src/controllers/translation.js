@@ -1,17 +1,25 @@
-const genius = require('../services/genius');
+const translationService = require('../services/translation');
+const songService = require('../services/song');
 
 module.exports = {
 
   async index(req, res) {
-    const id = req.query.q;
+    res.send('test');
+  },
 
+  async create(req, res) {
+    const { songId } = req.body;
+    res.send(id);
+  },
+
+  async song(req, res) {
+    const id = req.params.id;
     try {
-      const response = await genius.search(query)
-      return res.json(response);
+      const song = songService.getSongById(id);
+      res.json(song);
     } catch(err) {
-      return res.status(500).json(err);
+      res.json(err);
     }
-
   }
 
 };
