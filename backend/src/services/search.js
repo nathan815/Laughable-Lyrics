@@ -14,7 +14,7 @@ module.exports = {
       const response = await genius.search(query);
       return response.hits.filter(hitFilter).map(hitMapper);
     } catch (err) {
-      throw new Exception("Error fetching search results from Genius. ", err);
+      throw new Error("Error fetching search results from Genius. ", err);
     }
 
   }

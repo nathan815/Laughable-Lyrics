@@ -7,9 +7,9 @@ module.exports = {
 
     try {
       const response = await searchService.search(term);
-      return res.json(response);
+      res.json(response);
     } catch(err) {
-      return res.status(500).json(err);
+      res.status(500).json(err);
     }
 
   }
