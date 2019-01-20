@@ -35,7 +35,7 @@ class SearchResultsRecyclerAdapter(private val searchResults: ArrayList<SearchRe
         Glide.with(context).load(searchResults[position].ImageUrl).into(holder.artistImage)
         holder.rowContainer.setOnClickListener{
             val id: String = it.findViewById<TextView>(R.id.search_result_id).text.toString()
-            val bundle: Bundle = bundleOf("id" to id)
+            val bundle: Bundle = bundleOf("songId" to id)
             Navigation.findNavController(it).navigate(R.id.lyricsFragment, bundle)
         }
     }
