@@ -10,7 +10,7 @@ function SongModel(song, removeAllNewLinesFromLyrics = false) {
     this.lyrics = parseLyrics(song.lyrics, removeAllNewLinesFromLyrics);
     this.title = song.title;
     this.release_date = song.release_date;
-    this.media = song.media;
+    this.media = typeof song.media === 'string' ? JSON.parse(song.media) : song.media;
 };
 
 module.exports = SongModel;

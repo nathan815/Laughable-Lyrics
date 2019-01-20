@@ -1,9 +1,10 @@
 function TranslationModel(data) {
     this.id = data.id;
-    this.songId = data.songId;
+    this.song_id = parseInt(data.songId);
+    this.stages = data.stages;
     this.languages = data.languages;
-    this.originalLyrics = data.originalLyrics;
-    this.translatedLyrics = data.translatedLyrics;
+    this.original_lyrics = data.originalLyrics;
+    this.translated_lyrics = data.translatedLyrics;
 }
 
 module.exports = TranslationModel;

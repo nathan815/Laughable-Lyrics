@@ -6,10 +6,8 @@ async function createTranslation(songId, lyrics, numberOfTranslations = 1) {
     let currentText = lyrics;
     let translationSteps = [];
     const languages = [];
-    console.log('creating translation for song '+songId+'...');
     for(let i = 0; i < numberOfTranslations; i++) {
         const language = await cloudTranslate.getRandomLanguage();
-        console.log('lang',language);
         currentText = await cloudTranslate.translateText(currentText, language.code);
         translationSteps.push({
             language: language.name,
@@ -21,17 +19,21 @@ async function createTranslation(songId, lyrics, numberOfTranslations = 1) {
     const translation = new TranslationModel({
         songId,
         stages: numberOfTranslations,
-        languages,
+        languages: languages.join(','),
         originalLyrics: lyrics,
         translatedLyrics: finalTranslation,
     });
-    // console.log('pre-create translation db', translation);
     const result = await translationStore.createTranslation(translation);
     translation.id = result.insertId;
-    console.log('created translation', translation);
     return translation;
 }
 
+async function getTranslationById(id) {
+    const result = await translationStore.getTranslationById(id);
+    return result[0];
+}
+
 module.exports = {
-    createTranslation
+    createTranslation,
+    getTranslationById
 };
