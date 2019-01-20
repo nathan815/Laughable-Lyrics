@@ -5,19 +5,39 @@
         android:id="@+id/search_results_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:padding="8dp"
         android:clickable="true"
         android:focusable="true"
         android:background="?attr/selectableItemBackground">
 
     <TextView
             android:id="@+id/search_result_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/song_image_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:visibility="gone"
+            android:id="@+id/song_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
@@ -27,7 +47,5 @@
             android:id="@+id/search_result_id"
             android:layout_width="0dp"
             android:layout_height="0dp"/>
-
-    <!-- TODO: Add image -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

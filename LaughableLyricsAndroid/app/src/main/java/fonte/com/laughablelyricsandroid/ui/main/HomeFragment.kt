@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -39,7 +40,8 @@ class HomeFragment : Fragment() {
 //        list.add("Hi")
 //        enter_song.setAdapter(ArrayAdapter<String>(context!!, android.R.layout.simple_dropdown_item_1line, list))
         execute_search_button.setOnClickListener{
-            (activity as MainActivity).navController.navigate(R.id.action_homeFragment_to_optionsFragment, null)
+            val bundle: Bundle = bundleOf("searchQuery" to enter_song.text.toString())
+            (activity as MainActivity).navController.navigate(R.id.action_homeFragment_to_optionsFragment, bundle)
         }
     }
 }
