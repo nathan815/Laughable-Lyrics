@@ -6,9 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import fonte.com.laughablelyricsandroid.util.LyricResponse
 import fonte.com.laughablelyricsandroid.util.SearchResult
+import org.json.JSONObject
 import java.net.URLEncoder
+import java.util.*
 
 class MobileRequestService {
 
@@ -40,7 +44,32 @@ class MobileRequestService {
         )
         queue.add(jsonArrayRequest)
         return result
+    }
 
+    fun getLyrics(songId: Int, numBounces: Int, context: Context): MutableLiveData<LyricResponse> {
+        val result: MutableLiveData<LyricResponse> = MutableLiveData()
+        val queue = Volley.newRequestQueue(context)
+        val url = "http://35.22.120.35:1337/translations"
+
+
+        val params = HashMap<String, Int>()
+        params["songId"] = songId
+        params["stages"] = numBounces
+        val parameters = JSONObject(params)
+        val jsonArrayRequest = JsonObjectRequest(Request.Method.POST, url, parameters,
+            Response.Listener { response ->
+                Log.d(LOG_TAG, "Response: %s".format(response.toString()))
+                result.value = LyricResponse(
+                    response.get("original_lyrics").toString(),
+                    response.get("translated_lyrics").toString()
+                )
+            },
+            Response.ErrorListener { error ->
+                Log.e(LOG_TAG, error.toString())
+            }
+        )
+        queue.add(jsonArrayRequest)
+        return result
     }
 
     companion object {
