@@ -30,7 +30,7 @@
 
         <TextView
                 android:id="@+id/options_title"
-                android:text="Choose Your Song:"
+                android:text="Number of Bounces:"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:layout_margin="8dp"
                 android:layout_width="0dp"
@@ -40,6 +40,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 />
+
+        <TextView
+                android:id="@+id/search_results_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:layout_margin="8dp"
+                android:visibility="@{safeUnbox(viewModel.isProgressBarVisible) ? View.GONE : View.VISIBLE}"
+                android:text="search results for: hello world"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/options_seekbar"/>
 
         <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/options_seekbar"
@@ -58,7 +72,7 @@
                 android:layout_width="0dp"
                 android:visibility="@{safeUnbox(viewModel.isProgressBarVisible) ? View.GONE : View.VISIBLE}"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/options_seekbar"
+                app:layout_constraintTop_toBottomOf="@id/search_results_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 

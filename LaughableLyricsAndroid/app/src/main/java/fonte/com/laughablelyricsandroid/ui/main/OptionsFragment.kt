@@ -1,5 +1,6 @@
 package fonte.com.laughablelyricsandroid.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -36,6 +37,7 @@ class OptionsFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         options_seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -55,16 +57,10 @@ class OptionsFragment : Fragment() {
         context?.let {
             optionsFragmentViewModel.searchTerm?.let { it1 ->
                 optionsFragmentViewModel.searchRequest(it1, it).observe(this, Observer { result ->
-                    Log.d("OptionsFragment", result.toString())
-
-        //                for(i in result) {
-        //
-        //                }
-        //                val searchResults: ArrayList<SearchResult> = arrayListOf()
-        //                val dummySearchResult = SearchResult("Nonstop", "Drake", "40", "image.com")
-        //                searchResults.add(dummySearchResult)
                     search_results_recycler.adapter = SearchResultsRecyclerAdapter(result)
+                    search_results_title.text = "Search Results For: ${optionsFragmentViewModel.searchTerm}"
                     optionsFragmentViewModel.isProgressBarVisible.value = false
+
                 })
             }
         }
