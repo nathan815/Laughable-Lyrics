@@ -52,7 +52,7 @@ class OptionsFragment : Fragment() {
         search_results_recycler.layoutManager = LinearLayoutManager(activity)
 
         context?.let {
-            optionsFragmentViewModel.searchRequest("", it).observe(this, Observer { result ->
+            optionsFragmentViewModel.searchRequest("hello%20world", it).observe(this, Observer { result ->
                 Log.d("OptionsFragment", result.toString())
                 val searchResults: ArrayList<SearchResult> = arrayListOf()
                 val dummySearchResult = SearchResult("Nonstop", "Drake", "40", "image.com")
