@@ -23,6 +23,10 @@ class LyricsFragment : Fragment() {
                 viewModel = lyricsFragmentViewModel
                 setLifecycleOwner(this@LyricsFragment)
             }
+        lyricsFragmentViewModel.songId = LyricsFragmentArgs.fromBundle(arguments!!).songId?.toInt()
         return binding.root
     }
+
+
+
 }
