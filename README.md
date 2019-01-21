@@ -14,3 +14,6 @@ How does it work?
 2. The language for each translation stage will either be randomly chosen by Laughable Lyrics or selected by you
 3. Laughable Lyrics will sing the new translation-remixed lyrics 
 4. Share a link to the result with friends, or even try singing it yourself!
+
+## Local Configuration
+View the READMEs in respective directories.
