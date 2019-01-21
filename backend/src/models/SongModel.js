@@ -1,9 +1,4 @@
-function parseLyrics(lyrics, removeAllNewLines) {
-    return lyrics
-        .replace(/\[((Pre-)?Chorus|Verse)( [0-9]+)?]/g, '')
-        .replace(/^[(\n)]+/, '')
-        .replace(/[(\n)]+/g, removeAllNewLines ? ' ' : '\n ');
-}
+const parseLyrics = require('../utils/parseLyrics');
 
 function SongModel(song, removeAllNewLinesFromLyrics = false) {
     this.id = song.id;

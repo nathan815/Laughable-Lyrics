@@ -17,11 +17,6 @@ module.exports = {
         error: 'songId field is required'
       });
     }
-    if(!parseInt(stages) || stages < MIN_STAGE_COUNT || stages > MAX_STAGE_COUNT) {
-      res.status(422).json({
-        error: 'stages field not a number or not within limits'
-      });
-    }
     try {
       const song = await songService.getSongById(songId);
       const translation =
