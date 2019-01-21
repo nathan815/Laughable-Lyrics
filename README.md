@@ -1,4 +1,6 @@
 # Laughable Lyrics
+![Laughable Lyrics Logo](https://github.com/nathan815/Laughable-Lyrics/blob/master/logo.png)
+
 Created by Mark Fonte and Nathan Johnson at SpartaHack V
 
 Take the English lyrics of any song and translate them to another language, and then back to English. The result is usually not the same as the original input. Do this multiple times before translating back to English, and you can get some pretty funny results. 
