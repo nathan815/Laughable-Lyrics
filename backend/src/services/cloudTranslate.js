@@ -7,6 +7,7 @@ const googleTranslate = new Translate({
 let languagesCache = null;
 async function getLanguages() {
     if (!languagesCache) {
+        console.log('languages cache empty, requesting from google');
         languagesCache = {};
         const [languages] = await googleTranslate.getLanguages();
         for (const key in languages) {
