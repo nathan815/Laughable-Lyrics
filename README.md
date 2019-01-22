@@ -17,3 +17,5 @@ How does it work?
 
 ## Local Configuration
 View the READMEs in respective directories.
+- [Android App](https://github.com/nathan815/Laughable-Lyrics/LaughableLyricsAndroid)
+- [Backend](https://github.com/nathan815/Laughable-Lyrics/backend)
