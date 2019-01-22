@@ -21,5 +21,5 @@ View the READMEs in respective directories.
 - [Backend](backend)
 
 ### Project Awards
-- Top 10 Finish \- SpartaHack V
-- Funniest/Most Creative Hack sponsored by MLH \- SpartaHack V
+- **Top 10 Finish** \- SpartaHack V
+- **Funniest/Most Creative Hack** sponsored by MLH \- SpartaHack V
