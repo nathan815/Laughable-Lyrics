@@ -5,11 +5,12 @@ CREATE TABLE `translations` (
   `song_id` int(11) unsigned DEFAULT NULL,
   `stages` int(11) DEFAULT NULL,
   `languages` varchar(400) DEFAULT NULL,
-  `original_lyrics` text DEFAULT NULL,
   `translated_lyrics` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`),
+  KEY `song_id` (`song_id`),
+  CONSTRAINT `translations_ibfk_1` FOREIGN KEY (`song_id`) REFERENCES `songs` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `songs` (
   `id` int(30) unsigned NOT NULL,
