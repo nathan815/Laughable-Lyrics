@@ -9,6 +9,7 @@ import fonte.com.laughablelyricsandroid.util.LyricResponse
 class LyricsViewModel(private val mainRepository: MainRepository) : ViewModel() {
     var isProgressBarVisible: MutableLiveData<Boolean> = MutableLiveData()
     var songId: Int? = 0
+    var numBounces: Int = 0
 
     init {
         isProgressBarVisible.value = true

@@ -41,5 +41,9 @@
                 app:argType="string"
                 android:defaultValue="null"
                 app:nullable="true"/>
+        <argument
+                android:name="numBounces"
+                app:argType="integer"
+                android:defaultValue="4"/>
     </fragment>
 </navigation>

@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import fonte.com.laughablelyricsandroid.R
 import fonte.com.laughablelyricsandroid.util.SearchResult
 
-class SearchResultsRecyclerAdapter(private val searchResults: ArrayList<SearchResult>, private val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<SearchResultsRecyclerAdapter.ViewHolder>() {
+class SearchResultsRecyclerAdapter(private val searchResults: ArrayList<SearchResult>, private val context: Context, private val numBounces: Int) : androidx.recyclerview.widget.RecyclerView.Adapter<SearchResultsRecyclerAdapter.ViewHolder>() {
     class ViewHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v) {
         val title: TextView = v.findViewById(R.id.search_result_text)
         val id: TextView = v.findViewById(R.id.search_result_id)
@@ -35,7 +35,7 @@ class SearchResultsRecyclerAdapter(private val searchResults: ArrayList<SearchRe
         Glide.with(context).load(searchResults[position].ImageUrl).into(holder.artistImage)
         holder.rowContainer.setOnClickListener{
             val id: String = it.findViewById<TextView>(R.id.search_result_id).text.toString()
-            val bundle: Bundle = bundleOf("songId" to id)
+            val bundle: Bundle = bundleOf("songId" to id, "numBounces" to numBounces)
             Navigation.findNavController(it).navigate(R.id.lyricsFragment, bundle)
         }
     }
