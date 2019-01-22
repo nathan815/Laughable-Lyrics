@@ -1,4 +1,4 @@
-function parseLyrics(lyrics, removeAllNewLines) {
+function parseLyrics(lyrics, removeAllNewLines = false) {
     return lyrics
         .replace(/\[.+\]/g, '')
         .replace(/^[(\n)]+/, '')

@@ -29,7 +29,7 @@ module.exports = {
 
   },
 
-  async show(req, res) {
+  async show(req, res, next) {
     const id = req.params.id;
     if(!id) {
       res.status(422).send({ error: 'ID is required '});

@@ -20,15 +20,13 @@ async function getLanguages() {
     return languagesCache;
 }
 
-async function translateText(text, targetLanguage = null) {
-    if (!targetLanguage) {
-        throw new Exception("Target language is required");
-    }
+async function translateText(text, options) {
     try {
-        const results = await googleTranslate.translate(text, targetLanguage);
+        const results = await googleTranslate.translate(text, options);
+        console.log('Translation Results', JSON.stringify(results));
         return results[0];
     } catch (err) {
-        console.error('ERROR:', err);
+        console.error('Translation ERROR:', err);
     }
 }
 
@@ -36,6 +34,9 @@ async function getRandomLanguage() {
     const languages = await getLanguages();
     const languageCodes = Object.keys(languages);
     const randomLangCode = languageCodes[Math.round(Math.random() * (languageCodes.length - 1))];
+    if(randomLangCode == 'en') {
+        return await getRandomLanguage();
+    }
     return languages[randomLangCode];
 }
 

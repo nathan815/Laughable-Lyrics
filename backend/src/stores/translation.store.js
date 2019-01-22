@@ -19,9 +19,10 @@ module.exports = {
         });
     },
     async getTranslationById(id) {
-        //console.log('getTranslationById',id);
+        console.log('getTranslationById',id);
         return new Promise(function (resolve, reject) {
-            const sql = `SELECT translations.*, songs.lyrics as original_lyrics 
+            const sql = `SELECT translations.*, songs.id as song_id, songs.title, 
+                            songs.lyrics, songs.release_date, songs.media
                         FROM translations 
                         JOIN songs ON songs.id = translations.song_id
                         WHERE translations.id = ?`;
@@ -29,6 +30,7 @@ module.exports = {
                 if(err) {
                     reject(err);
                 }
+                console.log(result);
                 resolve(result);
             });
             return result;

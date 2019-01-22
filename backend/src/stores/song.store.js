@@ -4,12 +4,12 @@ module.exports = {
     async createSong(songModel) {
         return new Promise(function (resolve, reject) {
             const sql = `INSERT INTO songs 
-                        ( id, title, lyrics, media, release_date ) 
-                        VALUES ( ?, ?, ?, ?, ? )`;
-            const { id, lyrics, title, release_date, media } = songModel;
+                        ( id, title, artist, lyrics, media, release_date ) 
+                        VALUES ( ?, ?, ?, ?, ?, ? )`;
+            const { id, lyrics, artist, title, release_date, media } = songModel;
             //console.log(songModel);
             const result = db.query(sql, [
-                id, title, lyrics, JSON.stringify(media), release_date
+                id, title, artist, lyrics, JSON.stringify(media), release_date
             ], function (err, result) {
                 if(err) {
                     reject(err);
@@ -26,7 +26,7 @@ module.exports = {
                 if(err) {
                     reject(err);
                 }
-                resolve(results[0] || null);
+                resolve(new SongModel(results[0]) || null);
             });
             return result;
         });
