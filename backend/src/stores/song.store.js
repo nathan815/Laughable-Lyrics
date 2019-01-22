@@ -1,4 +1,5 @@
 const db = require('../database/connectionPool');
+const SongModel = require('../models/SongModel');
 
 module.exports = {
     async createSong(songModel) {
@@ -11,7 +12,7 @@ module.exports = {
             const result = db.query(sql, [
                 id, title, artist, lyrics, JSON.stringify(media), release_date
             ], function (err, result) {
-                if(err) {
+                if (err) {
                     reject(err);
                 }
                 resolve(result);
@@ -22,11 +23,11 @@ module.exports = {
     async getSongById(id) {
         return new Promise(function (resolve, reject) {
             const sql = `SELECT * FROM songs WHERE id = ?`;
-            const result = db.query(sql, [ id ], function (err, results) {
-                if(err) {
+            const result = db.query(sql, [id], function (err, results) {
+                if (err) {
                     reject(err);
                 }
-                resolve(new SongModel(results[0]) || null);
+                resolve(results[0] ? new SongModel(results[0]) : null);
             });
             return result;
         });

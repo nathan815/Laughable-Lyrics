@@ -1,5 +1,6 @@
 const translationService = require('../services/translation');
 const songService = require('../services/song');
+const SongModel = require('../models/SongModel');
 
 const MAX_STAGE_COUNT = 5;
 
@@ -19,12 +20,12 @@ module.exports = {
     stages = stages && stages < MAX_STAGE_COUNT ? stages : 2;
     try {
       const song = await songService.getSongById(songId);
+      console.log('song:',song);
       const translation =
-        await translationService.createTranslation(songId, song.lyrics, stages);
+        await translationService.createTranslation(song, stages);
       res.send(translation);
     } catch (err) {
-      console.log("TRANSLATION ERR: ", err);
-      next(err);
+      res.status(404).send({ error: err.toString() });
     }
 
   },

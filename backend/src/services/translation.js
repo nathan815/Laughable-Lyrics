@@ -1,9 +1,11 @@
 const cloudTranslate = require('./cloudTranslate');
 const translationStore = require('../stores/translation.store');
 const TranslationModel = require('../models/TranslationModel');
+const SongModel = require('../models/SongModel');
 const parseLyrics = require('../utils/parseLyrics');
+const sleep = require('../utils/sleep');
 
-async function createTranslation(songId, lyrics, steps = 1) {
+async function createTranslation(song, steps = 1) {
     // generate random languages
     const languages = [];
     for (let i = 0; i < steps; i++) {
@@ -11,21 +13,22 @@ async function createTranslation(songId, lyrics, steps = 1) {
         languages.push(language);
     }
 
-    let currentText = lyrics;
-    let currentLang = null;
+    let currentText = song.lyrics;
+    let prevLang = null;
     let translationSteps = [];
 
     // translate the lyrics to each language
     for (let language of languages) {
         currentText = await cloudTranslate.translateText(parseLyrics(currentText), {
-            from: currentLang ? currentLang.code : null,
+            from: prevLang ? prevLang.code : null,
             to: language.code
         });
-        currentLang = language;
+        prevLang = language;
         translationSteps.push({
             language: language,
             translation: currentText
         });
+        await sleep(1000);
     }
 
     const finalTranslation = await cloudTranslate.translateText(currentText, { to: 'en' });
@@ -35,11 +38,11 @@ async function createTranslation(songId, lyrics, steps = 1) {
     }, []).join(',');
 
     const translation = new TranslationModel({
-        song_id: songId,
         stages: steps,
         languages: languagesString,
-        original_lyrics: lyrics,
+        lyrics: song.lyrics,
         translated_lyrics: finalTranslation,
+        song: song,
     });
 
     const result = await translationStore.createTranslation(translation);

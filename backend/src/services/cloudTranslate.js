@@ -4,6 +4,15 @@ const googleTranslate = new Translate({
     projectId: process.env.GOOGLE_PROJECT_ID,
 });
 
+async function translateText(text, options) {
+    try {
+        const results = await googleTranslate.translate(text, options);
+        return results[0];
+    } catch (err) {
+        console.error('Translation ERROR:', err);
+    }
+}
+
 let languagesCache = null;
 async function getLanguages() {
     if (!languagesCache) {
@@ -20,23 +29,11 @@ async function getLanguages() {
     return languagesCache;
 }
 
-async function translateText(text, options) {
-    try {
-        const results = await googleTranslate.translate(text, options);
-        console.log('Translation Results', JSON.stringify(results));
-        return results[0];
-    } catch (err) {
-        console.error('Translation ERROR:', err);
-    }
-}
-
 async function getRandomLanguage() {
     const languages = await getLanguages();
+    delete languages.en;
     const languageCodes = Object.keys(languages);
     const randomLangCode = languageCodes[Math.round(Math.random() * (languageCodes.length - 1))];
-    if(randomLangCode == 'en') {
-        return await getRandomLanguage();
-    }
     return languages[randomLangCode];
 }
 

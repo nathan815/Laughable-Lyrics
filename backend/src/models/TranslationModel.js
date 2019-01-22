@@ -2,8 +2,8 @@ const parseLyrics = require('../utils/parseLyrics');
 const SongModel = require('../models/SongModel');
 
 function TranslationModel(data) {
-    this.id = data.id;
-    this.song = new SongModel(data);
+    this.id = parseInt(data.id);
+    this.song = new SongModel(data.song || data);
     this.stages = data.stages;
     this.languages = data.languages;
     this.original_lyrics = parseLyrics(data.lyrics);

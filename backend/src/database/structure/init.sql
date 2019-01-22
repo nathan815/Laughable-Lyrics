@@ -9,8 +9,8 @@ CREATE TABLE `translations` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `song_id` (`song_id`),
-  CONSTRAINT `translations_ibfk_1` FOREIGN KEY (`song_id`) REFERENCES `songs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `translations_song_id` FOREIGN KEY (`song_id`) REFERENCES `songs` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `songs` (
   `id` int(30) unsigned NOT NULL,
