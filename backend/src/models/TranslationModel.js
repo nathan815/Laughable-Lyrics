@@ -6,6 +6,7 @@ function TranslationModel(data) {
     this.song = new SongModel(data);
     this.stages = data.stages;
     this.languages = data.languages;
+    this.original_lyrics = parseLyrics(data.lyrics);
     this.translated_lyrics = parseLyrics(data.translated_lyrics);
 }
 
