@@ -9,9 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.ViewPager
 import fonte.com.laughablelyricsandroid.R
+import fonte.com.laughablelyricsandroid.adapter.LyricPagerAdapter
 import fonte.com.laughablelyricsandroid.databinding.LyricsFragmentBinding
 import fonte.com.laughablelyricsandroid.util.InjectorUtils
+import kotlinx.android.synthetic.main.lyrics_fragment.*
 
 class LyricsFragment : Fragment() {
 
@@ -31,9 +34,15 @@ class LyricsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lyricsFragmentViewModel.songId?.let { lyricsFragmentViewModel.getLyrics(it, 5, context!!) }
+        lyricsFragmentViewModel.songId?.let { lyricsFragmentViewModel.getLyrics(it, 4, context!!) }
             ?.observe(this, Observer { response ->
-                Log.d("Tag", response.Original)
+                //Log.d("Tag", response.Original)
+                // val lyricsPager : ViewPager = lyrics_view_pager
+                //lyricsPager.adapter = LyricPagerAdapter(childFragmentManager, response.Original!!, response.Translated!!)
+                //lyrics_tab_layout.setupWithViewPager(lyricsPager, true)
+                lyricsFragmentViewModel.isProgressBarVisible.value = false
+                lyric_text.text = response.Translated
             })
+
     }
 }
