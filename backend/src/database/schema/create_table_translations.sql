@@ -1,4 +1,4 @@
-CREATE TABLE `translations` (
+CREATE TABLE IF NOT EXISTS `translations` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `song_id` int(11) unsigned DEFAULT NULL,
   `stages` int(11) DEFAULT NULL,

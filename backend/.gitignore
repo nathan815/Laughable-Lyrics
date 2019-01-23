@@ -1,6 +1,7 @@
 node_modules
 .tmp
 .env
+src/database/migrated
 *~
 *#
 .DS_STORE

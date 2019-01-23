@@ -1,4 +1,4 @@
-CREATE TABLE `songs` (
+CREATE TABLE IF NOT EXISTS `songs` (
   `id` int(30) unsigned NOT NULL,
   `lyrics` text DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,

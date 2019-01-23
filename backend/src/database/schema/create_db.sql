@@ -1,1 +1,1 @@
-CREATE DATABASE `laughable_lyrics`;
+CREATE DATABASE IF NOT EXISTS `laughable_lyrics`;
