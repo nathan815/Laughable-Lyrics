@@ -29,12 +29,13 @@ class LyricsFragment : Fragment() {
                 setLifecycleOwner(this@LyricsFragment)
             }
         lyricsFragmentViewModel.songId = LyricsFragmentArgs.fromBundle(arguments!!).songId?.toInt()
+        lyricsFragmentViewModel.numBounces = LyricsFragmentArgs.fromBundle(arguments!!).numBounces
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lyricsFragmentViewModel.songId?.let { lyricsFragmentViewModel.getLyrics(it, 4, context!!) }
+        lyricsFragmentViewModel.songId?.let { lyricsFragmentViewModel.getLyrics(it, lyricsFragmentViewModel.numBounces, context!!) }
             ?.observe(this, Observer { response ->
                 //Log.d("Tag", response.Original)
                 // val lyricsPager : ViewPager = lyrics_view_pager

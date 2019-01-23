@@ -57,7 +57,7 @@ class OptionsFragment : Fragment() {
         context?.let {
             optionsFragmentViewModel.searchTerm?.let { it1 ->
                 optionsFragmentViewModel.searchRequest(it1, it).observe(this, Observer { result ->
-                    search_results_recycler.adapter = SearchResultsRecyclerAdapter(result, it)
+                    search_results_recycler.adapter = SearchResultsRecyclerAdapter(result, it, options_seekbar.progress)
                     search_results_title.text = "Search Results For: ${optionsFragmentViewModel.searchTerm}"
                     optionsFragmentViewModel.isProgressBarVisible.value = false
 
