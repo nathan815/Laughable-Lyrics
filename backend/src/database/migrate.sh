@@ -12,6 +12,21 @@ result=$?
 
 cd schema;
 
+# Create database
+echo "Creating database laughable_lyrics";
+sql_installed_file="$sql_installed_dir/1_create_db.sql.txt"
+mysql -u$DB_USER -p$DB_PASS < 1_create_db.sql;
+result=$?;
+if [[ $result == "0" ]] || [[ $result == *"exists"* ]]; then
+	mkdir -p $sql_installed_dir;
+	touch $sql_installed_file;
+	date >> $sql_installed_file;
+fi
+echo "Complete: 1_create_db.sql";
+
+# Create tables
+cd create_tables;
+
 for sql_file in `ls *.sql`; do
     sql_installed_file="$sql_installed_dir/$sql_file.txt"
     if [ ! -e $sql_installed_file ]; then
@@ -19,9 +34,9 @@ for sql_file in `ls *.sql`; do
         mysql -u$DB_USER -p$DB_PASS $DB_NAME < $sql_file;
         result=$?;
         if [[ $result == "0" ]] || [[ $result == *"exists"* ]]; then
-            mkdir -p $sql_installed_dir;
-            touch $sql_installed_file;
-            date >> $sql_installed_file;
+            mkdir -p ../$sql_installed_dir;
+            touch ../$sql_installed_file;
+            date >> ../$sql_installed_file;
         fi
         echo "Complete: $sql_file";
     else
