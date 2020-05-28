@@ -8,8 +8,10 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import fonte.com.laughablelyricsandroid.R
 import fonte.com.laughablelyricsandroid.util.LyricResponse
 import fonte.com.laughablelyricsandroid.util.SearchResult
+import kotlinx.android.synthetic.main.main_activity.*
 import org.json.JSONObject
 import java.net.URLEncoder
 import java.util.*
@@ -18,14 +20,12 @@ class MobileRequestService {
 
     fun searchRequest(queryParams: String, context: Context): MutableLiveData<ArrayList<SearchResult>> {
         val result: MutableLiveData<ArrayList<SearchResult>> = MutableLiveData()
-        // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(context)
-        val url = "http://35.22.120.35:1337/search?q=${URLEncoder.encode(queryParams, "utf-8")}"
+        val url = "http://10.0.0.177:1337/search?q=${URLEncoder.encode(queryParams, "utf-8")}"
 
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
                 Log.d(LOG_TAG, "Response: %s".format(response.toString()))
-                // result.value = response
                 val searchResults: ArrayList<SearchResult> = arrayListOf()
                 for (i in 0 until response!!.length()) {
                     val searchResult = SearchResult(
@@ -49,7 +49,7 @@ class MobileRequestService {
     fun getLyrics(songId: Int, numBounces: Int, context: Context): MutableLiveData<LyricResponse> {
         val result: MutableLiveData<LyricResponse> = MutableLiveData()
         val queue = Volley.newRequestQueue(context)
-        val url = "http://35.22.120.35:1337/translations"
+        val url = "http://10.0.0.177:1337/translations"
 
 
         val params = HashMap<String, Int>()
